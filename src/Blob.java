@@ -20,7 +20,7 @@ public class Blob {
         String fileString = new String(encoded);
         sha1Code=getSha1Name(contents);
         
-        File sha1File = new File("/Users/remynavarre/eclipse-workspace/VersionControl/objects/"+sha1Code);
+        File sha1File = new File("./objects/"+sha1Code);
         sha1File.createNewFile();
         
         FileWriter myWriter = new FileWriter(sha1File.getName());

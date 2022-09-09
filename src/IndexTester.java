@@ -8,7 +8,9 @@ public class IndexTester {
 		Index test = new Index();
 		test.init();
 		test.add("foo.txt");
+		test.add("bar.txt");
 		
+		test.remove("foo.txt");
 		
 		
 	}
