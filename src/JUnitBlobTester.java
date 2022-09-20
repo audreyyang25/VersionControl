@@ -11,7 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class JUnitTester {
+class JUnitBlobTester {
 	static File f;
 	
 	@BeforeAll
