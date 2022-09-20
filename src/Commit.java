@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
+import java.time.Instant;
 import java.util.Formatter;
 import java.util.LinkedList;
 
@@ -58,9 +59,7 @@ public class Commit {
 	}
 	
 	public static String getDate() { //revisit
-		StringBuilder sb=new StringBuilder();
-		sb.append(getDate());
-		return sb.toString();
+		return Instant.now().toString();
 	}
 	
 	private static String getSha1Name(String password)
