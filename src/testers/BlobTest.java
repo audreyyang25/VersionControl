@@ -1,6 +1,7 @@
 package testers;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -20,6 +21,8 @@ import source.MrTopicsMan;
 
 class BlobTest {
 	static File f;
+	static File f2;
+	static File f3;
 
 	@BeforeAll
 	static void setUpBefore() throws IOException {
@@ -27,16 +30,28 @@ class BlobTest {
 		FileWriter ike = new FileWriter(f);
 		ike.write("this is erik's new test file");
 		ike.close();
+		
+		f2 = new File("something");
+		FileWriter ike2 = new FileWriter(f2);
+		ike2.write("some content");
+		ike2.close();
+		
+		f3 = new File("bar.txt");
+		FileWriter ike3 = new FileWriter(f3);
+		ike3.write("bye");
+		ike3.close();
 
 	}
 
 	@AfterAll
 	static void shutDownAfter() throws IOException {
 		f.delete();
+		f2.delete();
+		f3.delete();
 	}
 
 	@Test
-	static void testBlob() throws IOException {
+	void testBlob() throws IOException {
 
 		Blob b = new Blob("Erik's test file");
 
@@ -48,14 +63,14 @@ class BlobTest {
 		while (mike.ready())
 			temp += (char)mike.read();
 		mike.close();
-
+		
 		System.out.print(temp);
 		assertTrue(temp.equals("this is erik's new test file"));
 
 	}
 
 	@Test
-	static void testIndex() throws IOException {
+	void testIndex() throws IOException {
 		FileWriter ike = new FileWriter(f);
 		Index i = new Index();
 		i.init();
@@ -70,14 +85,19 @@ class BlobTest {
 		File testBlob = new File("./objects/94e66df8cd09d410c62d9e0dc59d3a884e458e05");
 		assertTrue(testBlob.exists());
 		i.add("bar.txt");
-		testBlob = new File("./objects/78c9a53e2f28b543ea62c8266acfdf36d5c63e61");
+		File testBlob2 = new File("./objects/78c9a53e2f28b543ea62c8266acfdf36d5c63e61");
 		assertTrue(testBlob.exists());
+		String content1 = BlobTest.content (testBlob.getAbsolutePath());
+		String content2 = BlobTest.content(testBlob2.getAbsolutePath());
 		i.remove("bar.txt");
 		assertTrue(!testBlob.exists());
+		
+		assertTrue (content1.equals(BlobTest.content(f2.getAbsolutePath())));
+		assertTrue (content2.equals(BlobTest.content(f3.getAbsolutePath())));
 	}
 
 	@Test
-	static void testBlobSet() throws IOException {
+	void testBlobSet() throws IOException {
 		ArrayList<String> testList = new ArrayList<>();
 		MrTopicsMan help = new MrTopicsMan();
 		String s = "";
@@ -92,12 +112,18 @@ class BlobTest {
 //		assertTrue(help.readContents(testFile).equals(s));
 	}
 
-	@Test
-	void test() throws IOException {
-		testBlob();
-		testIndex();
-		testBlobSet();
-//		fail("Not yet implemented");
+	
+	private static String content (String filepath) throws IOException {
+		File file = new File (filepath);
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		StringBuilder sb = new StringBuilder();
+		String line = br.readLine();
+		while (line != null) {
+			sb.append(line).append("\n");
+			line = br.readLine();
+		}
+		String fileAsString = sb.toString();
+		return fileAsString;
 	}
 
 }

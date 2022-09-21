@@ -6,6 +6,9 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/audreyyang/Downloads/junit-jupiter-5.9.0.jar"/>
+	<classpathentry kind="lib" path="/Users/audreyyang/Downloads/junit-platform-suite-api-1.9.0.jar"/>
+	<classpathentry kind="lib" path="/Users/audreyyang/Downloads/junit-jupiter-api-5.9.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
