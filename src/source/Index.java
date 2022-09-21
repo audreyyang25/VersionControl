@@ -21,8 +21,8 @@ public class Index {
 	}
 
 	public void init() {
-		new File("./object").mkdirs();
-		File f = new File("./object/"+"index");
+		new File("./objects").mkdirs();
+		File f = new File("./objects/"+"index");
 
 	}
 
@@ -42,12 +42,12 @@ public class Index {
        // blobList.put(fileName, sha1Code);
        // Blob blob= new blob(m_testDirectory +filename, false , true);
 
-		File sha1File = new File("./object/"+sha1Contents);
+		File sha1File = new File("./objects/"+sha1Contents);
         sha1File.createNewFile();
 
         blobList.put(fileName, sha1Contents);
 
-        new FileWriter("./object/"+"index", false).close();
+        new FileWriter("./objects/"+"index", false).close();
         FileWriter myWriter = new FileWriter("index");
 
        //myWriter.write(blobList.toString()+"\n"); //does this work or do i need to for loop thru it
@@ -69,7 +69,7 @@ public class Index {
 		String sha1OfFileToRemove= blobList.get(fileToRemove);
 		blobList.remove(fileToRemove);
 
-		new FileWriter("./object/"+"index", false).close();
+		new FileWriter("./objects/"+"index", false).close();
         FileWriter myWriter = new FileWriter("index");
 
        //myWriter.write(blobList.toString()+"\n"); //does this work or do i need to for loop thru it
@@ -84,7 +84,7 @@ public class Index {
         myWriter.close();
 
 
-        String path= "./object/"+ sha1OfFileToRemove;
+        String path= "./objects/"+ sha1OfFileToRemove;
 		Files.delete(Paths.get(path));
 
 

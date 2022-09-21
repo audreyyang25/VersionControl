@@ -50,7 +50,7 @@ class BlobTest {
 		mike.close();
 
 		System.out.print(temp);
-		assertTrue(!temp.equals("this is erik's new test file"));
+		assertTrue(temp.equals("this is erik's new test file"));
 
 	}
 
@@ -63,14 +63,14 @@ class BlobTest {
 		File testIndex = new File("index");
 		assertTrue(testIndex.exists());
 
-		File testObject = new File(".\\object\\");
+		File testObject = new File("./objects/");
 		assertTrue(testObject.exists());
 
 		i.add("something");
-		File testBlob = new File(".\\object\\94e66df8cd09d410c62d9e0dc59d3a884e458e05");
+		File testBlob = new File("./objects/94e66df8cd09d410c62d9e0dc59d3a884e458e05");
 		assertTrue(testBlob.exists());
 		i.add("bar.txt");
-		testBlob = new File(".\\object\\78c9a53e2f28b543ea62c8266acfdf36d5c63e61");
+		testBlob = new File("./objects/78c9a53e2f28b543ea62c8266acfdf36d5c63e61");
 		assertTrue(testBlob.exists());
 		i.remove("bar.txt");
 		assertTrue(!testBlob.exists());
