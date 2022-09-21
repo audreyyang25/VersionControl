@@ -19,7 +19,7 @@ import source.Index;
 import source.MrTopicsMan;
 
 
-class BlobTest {
+class BlobIndexTest {
 	static File f;
 	static File f2;
 	static File f3;
@@ -87,13 +87,13 @@ class BlobTest {
 		i.add("bar.txt");
 		File testBlob2 = new File("./objects/78c9a53e2f28b543ea62c8266acfdf36d5c63e61");
 		assertTrue(testBlob.exists());
-		String content1 = BlobTest.content (testBlob.getAbsolutePath());
-		String content2 = BlobTest.content(testBlob2.getAbsolutePath());
+		String content1 = BlobIndexTest.content (testBlob.getAbsolutePath());
+		String content2 = BlobIndexTest.content(testBlob2.getAbsolutePath());
 		i.remove("bar.txt");
 		assertTrue(!testBlob.exists());
 		
-		assertTrue (content1.equals(BlobTest.content(f2.getAbsolutePath())));
-		assertTrue (content2.equals(BlobTest.content(f3.getAbsolutePath())));
+		assertTrue (content1.equals(BlobIndexTest.content(f2.getAbsolutePath())));
+		assertTrue (content2.equals(BlobIndexTest.content(f3.getAbsolutePath())));
 	}
 
 	@Test
