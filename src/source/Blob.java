@@ -12,28 +12,28 @@ import java.util.Formatter;
 
 
 public class Blob {
-	
-	private String sha1Code; 
-	
+
+	private String sha1Code;
+
 	public Blob(String path) throws IOException {
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
-        String contents=  new String(encoded, StandardCharsets.UTF_8); 
+        String contents=  new String(encoded, StandardCharsets.UTF_8);
         String fileString = new String(encoded);
         sha1Code=getSha1Name(contents);
-        
+
         File sha1File = new File(".\\objects\\"+sha1Code);
         sha1File.createNewFile();
-        
+
         FileWriter myWriter = new FileWriter(sha1File.getName());
         myWriter.write(fileString);
         myWriter.close();
-        
+
 	}
-	
+
 	public String getSha1FileName() {
 		return sha1Code;
 	}
-	
+
 	private static String getSha1Name(String password)
 	{
 	    String sha1 = "";
@@ -66,6 +66,6 @@ public class Blob {
 	    formatter.close();
 	    return result;
 	}
-	
-	
+
+
 }

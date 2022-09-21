@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -13,15 +12,15 @@ public class MrTopicsMan {
 	private static FileWriter ike;
 	private BufferedReader mike;
 	public MrTopicsMan() {
-		
+
 	}
-	
+
 	public static void writeTo(File f, String s) throws IOException {
 		ike = new FileWriter(f);
 		ike.write(s);
 		ike.close();
 	}
-	
+
 	public String readContents(File f) throws IOException {
 		String temp = "";
 		mike = new BufferedReader(new FileReader(f));
@@ -30,16 +29,16 @@ public class MrTopicsMan {
 		mike.close();
 		return temp;
 	}
-	
+
 	public String shaify(File f) throws IOException{
 		String temp = readContents(f);
 		return fileNameCreator(temp);
 	}
-	
+
 	public String shaify(String s) throws IOException{
 		return fileNameCreator(s);
 	}
-	
+
 	public static String fileNameCreator(String in) {
 		try {
 	        // getInstance() method is called with algorithm SHA-1

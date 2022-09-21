@@ -19,7 +19,7 @@ public class Tree {
 	private File indexF;
 	private String hash;
 	private String content;
-	
+
 	public Tree (ArrayList <String> blobs) throws IOException, NoSuchAlgorithmException {
 		content = this.convertListToString(blobs);
 		indexF = new File ("./indexF");
@@ -30,7 +30,7 @@ public class Tree {
 		this.createsNewFile();
 		indexF.delete();
 	}
-	
+
 	private String convertListToString (ArrayList <String> info) {
 		String str = "";
 		for (int i=0; i<info.size()-1; i++) {
@@ -40,7 +40,7 @@ public class Tree {
 		str += info.get(info.size()-1);
 		return str;
 	}
-	
+
 	private void writeFile (String fileName, String content) {
 		 Path p = Paths.get(fileName);
 	        try {
@@ -50,7 +50,7 @@ public class Tree {
 	            e.printStackTrace();
 	        }
 	}
-	
+
 	private String createHash (String filePath) throws IOException, NoSuchAlgorithmException {
 		//https://gist.github.com/zeroleaf/6809843
 		FileInputStream fileInputStream = new FileInputStream(filePath);
@@ -64,9 +64,9 @@ public class Tree {
 		byte[] resultByteArry = digest.digest();
 		hash = bytesToHexString(resultByteArry);
 		return hash;
-		
+
 	}
-	
+
 	public static String bytesToHexString(byte[] bytes) {
 		StringBuilder sb = new StringBuilder();
 		for (byte b : bytes) {
@@ -80,25 +80,13 @@ public class Tree {
 		}
 		return sb.toString();
 	}
-	
-	private String content (String filepath) throws IOException {
-		File file = new File (filepath);
-		BufferedReader br = new BufferedReader(new FileReader(file)); 
-		StringBuilder sb = new StringBuilder(); 
-		String line = br.readLine(); 
-		while (line != null) { 
-			sb.append(line).append("\n"); 
-			line = br.readLine(); 
-		} 
-		String fileAsString = sb.toString();
-		return fileAsString;
-	} 
-	
+
+
 	private String createsNewFile () throws IOException {
 		File f = new File ("objects/" + hash);
 		String path = f.getAbsolutePath();
 		FileWriter writer = new FileWriter(path);
-		
+
 		writer.write (content);
 		writer.close();
 		return path;
