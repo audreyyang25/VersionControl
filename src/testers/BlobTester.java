@@ -1,3 +1,4 @@
+package testers;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.BufferedReader;
@@ -11,7 +12,13 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class JUnitBlobTester {
+import source.Blob;
+import source.BlobSet;
+import source.Index;
+import source.MrTopicsMan;
+
+
+class BlobTester {
 	static File f;
 	
 	@BeforeAll
